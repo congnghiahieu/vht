@@ -2,7 +2,7 @@ FROM python:3.10.18-bullseye
 
 RUN apt-get update \
   # dependencies for building Python packages \
-  && apt-get install -y build-essential pkg-config python3-dev default-libmysqlclient-dev \
+  && apt-get install -y build-essential \
   # psycopg2 dependencies
   && apt-get install -y libpq-dev \
   # Translations dependencies
@@ -16,4 +16,6 @@ RUN apt-get update \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/* \
   && rm kubectl
-  
+
+COPY requirements.lock .
+RUN pip install --no-cache-dir --no-compile --disable-pip-version-check -r requirements.lock
