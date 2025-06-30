@@ -2,6 +2,11 @@ PLAYBOOK_OPENRESTY_BASE_IMAGE_VERSION=v1.0.3
 PLAYBOOK_BACKEND_BASE_IMAGE_VERSION=v1.0.5
 MDA_DA_BASE_IMAGE_VERSION=v1.0.0
 
+.PHONY: hello
+
+hello:
+	@echo "Hello from Gitpod"
+
 playbook-openresty:
 	@docker build -t hieucien/playbook-openresty:$(PLAYBOOK_OPENRESTY_BASE_IMAGE_VERSION) -f playbook/openresty/Dockerfile playbook/openresty/
 	@docker push hieucien/playbook-openresty:$(PLAYBOOK_OPENRESTY_BASE_IMAGE_VERSION)
