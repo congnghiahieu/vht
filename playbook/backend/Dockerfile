@@ -1,4 +1,4 @@
-FROM python:3.10.18-bullseye
+FROM python:3.9.16-bullseye
 
 RUN apt-get update \
   # dependencies for building Python packages \
@@ -17,5 +17,10 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && rm kubectl
 
+# Set environment variables
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 COPY requirements.lock .
-RUN pip install --no-cache-dir --no-compile --disable-pip-version-check -r requirements.lock
+RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.lock
