@@ -22,5 +22,5 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-COPY requirements.lock .
-RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.lock
+COPY requirements.txt .
+RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt
