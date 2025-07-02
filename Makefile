@@ -20,8 +20,13 @@ playbook-web:
 	@docker push hieucien/playbook-web:$(PLAYBOOK_WEB_BASE_IMAGE_VERSION)
 
 MDA_DA_GATEWAY_BASE_IMAGE_VERSION=v1.0.1
+MDA_DA_SERVING_BASE_IMAGE_VERSION=v1.0.0
 
 mda-da-gateway:
 	@docker build -t hieucien/mda-da-gateway:$(MDA_DA_GATEWAY_BASE_IMAGE_VERSION) -f mda-da/gateway/Dockerfile mda-da/gateway/
 	@docker push hieucien/mda-da-gateway:$(MDA_DA_GATEWAY_BASE_IMAGE_VERSION)
+
+mda-da-serving:
+	@docker build -t hieucien/mda-da-serving:$(MDA_DA_SERVING_BASE_IMAGE_VERSION) -f mda-da/serving/Dockerfile mda-da/serving/
+	@docker push hieucien/mda-da-serving:$(MDA_DA_SERVING_BASE_IMAGE_VERSION)
 
